@@ -1,0 +1,10 @@
+synonym_dictionary = {}
+n = int(input())
+for _ in range(n):
+    line = input().split()
+    word1 = line[0]
+    word2 = line[1]
+    synonym_dictionary[word1] = word2
+    synonym_dictionary[word2] = word1
+word_to_find = input()
+print(synonym_dictionary[word_to_find])
