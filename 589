@@ -1,0 +1,27 @@
+n = int(input())
+permissions = {}
+for _ in range(n):
+    line = input().split()
+    file_name = line[0]
+    permissions_set = set(line[1:])
+    permissions[file_name] = permissions_set
+op_map = {
+    'write': 'W',
+    'read': 'R',
+    'execute': 'X'
+}
+m = int(input())
+
+for _ in range(m):
+    request = input().split()
+    requested_op = request[0]
+    requested_file = request[1]
+    required_char = op_map.get(requested_op)
+    if requested_file in permissions:
+        allowed_chars = permissions[requested_file]   
+        if required_char in allowed_chars:
+            print("OK")
+        else:
+            print("Access denied")
+    else:
+        print("Access denied")
